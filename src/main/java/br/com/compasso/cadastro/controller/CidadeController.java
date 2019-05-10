@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.compasso.cadastro.model.Cidade;
@@ -21,12 +22,12 @@ public class CidadeController {
 	@Autowired
 	private CidadeService service;
 	
-	@RequestMapping(value = "/porCidade/{cidade}")
+	@RequestMapping(value = "/porCidade/{cidade}", method = RequestMethod.GET)
 	public List<Cidade> pesquisaPorCidade( @PathVariable("cidade") String cidade){
 		return service.pesquisaPorNome(cidade);
 	}
 	
-	@RequestMapping(value = "/porEstado/{estado}")
+	@RequestMapping(value = "/porEstado/{estado}", method = RequestMethod.GET)
 	public List<Cidade> pesquisaPorEstado( @PathVariable("estado") String estado){
 		return service.pesquisaPorEstado(estado);
 	}
